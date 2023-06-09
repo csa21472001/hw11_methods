@@ -2,8 +2,7 @@ import java.time.LocalDate;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         System.out.println("Задача 1");
         int years = ThreadLocalRandom.current().nextInt(4, 2023 + 1);
         identifyYear(years);
@@ -11,11 +10,20 @@ public class Main {
         System.out.println("Задача 2");
         int clientOS = ThreadLocalRandom.current().nextInt(0, 3 + 1);
         int clientYear = ThreadLocalRandom.current().nextInt(2007, 2026 + 1);
-        selectOS(clientOS,clientYear);
+        selectOS(clientOS, clientYear);
 
         System.out.println("Задача 3");
-        int deliveryDistance = ThreadLocalRandom.current().nextInt(1, 120 + 1);
-        deliveryTime(deliveryDistance);
+        int deliveryDistance = 95;
+        if (deliveryDistance <= 20) {
+            System.out.println("Доставка потребует " + deliveryTime(deliveryDistance) + " день/дня ");
+        } else if (deliveryDistance > 20 && deliveryDistance <= 60) {
+            System.out.println("Доставка потребует " + deliveryTime(deliveryDistance) + " день/дня ");
+        } else if (deliveryDistance > 60 && deliveryDistance <= 100) {
+            System.out.println("Доставка потребует " + deliveryTime(deliveryDistance) + " день/дня ");
+        } else {
+            System.out.println("Свыше 100 км доставки нет.");
+        }
+
 
 //          task2();
 //          task3();
@@ -24,8 +32,8 @@ public class Main {
 //          task6();
 //          task7();
     }
-    public static void identifyYear(int year)
-    {
+
+    public static void identifyYear(int year) {
 //        year = ThreadLocalRandom.current().nextInt(4, 2023 + 1);
         if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
             System.out.println(year + " год  является високосным");
@@ -33,8 +41,8 @@ public class Main {
             System.out.println(year + " год не является високосным");
         }
     }
-    public static void selectOS(int clientOS, int clientYear)
-    {
+
+    public static void selectOS(int clientOS, int clientYear) {
         int iOS = 0;
         int android = 1;
         int checkYear = LocalDate.now().getYear();
@@ -51,16 +59,21 @@ public class Main {
             System.out.println("Сейчас мы предложим версию под андроид");
         }
     }
-    public static void deliveryTime(int deliveryDistance) {
-        int deliveryDays = 1;
+
+    public static int deliveryTime(int deliveryDistance) {
+        int deliveryDays;
         if (deliveryDistance <= 20) {
-            System.out.println("Доставка потребует " + deliveryDays + " день/дня ");
+            deliveryDays = 1;
+            return deliveryDays;
         } else if (deliveryDistance > 20 && deliveryDistance <= 60) {
-            System.out.println("Доставка потребует " + (deliveryDays + 1) + " день/дня ");
+            deliveryDays = 2;
+            return deliveryDays;
         } else if (deliveryDistance > 60 && deliveryDistance <= 100) {
-            System.out.println("Доставка потребует " + (deliveryDays + 2) + " день/дня ");
+            deliveryDays = 3;
+            return deliveryDays;
         } else {
-            System.out.println("Свыше 100 км доставки нет.");
+            deliveryDays = -1;
+            return deliveryDays;
         }
     }
 }
