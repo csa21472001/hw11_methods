@@ -14,11 +14,7 @@ public class Main {
 
         System.out.println("Задача 3");
         int deliveryDistance = 95;
-        if (deliveryDistance <= 20) {
-            System.out.println("Доставка потребует " + deliveryTime(deliveryDistance) + " день/дня ");
-        } else if (deliveryDistance > 20 && deliveryDistance <= 60) {
-            System.out.println("Доставка потребует " + deliveryTime(deliveryDistance) + " день/дня ");
-        } else if (deliveryDistance > 60 && deliveryDistance <= 100) {
+        if (deliveryTime(deliveryDistance)>0) {
             System.out.println("Доставка потребует " + deliveryTime(deliveryDistance) + " день/дня ");
         } else {
             System.out.println("Свыше 100 км доставки нет.");
@@ -64,16 +60,13 @@ public class Main {
         int deliveryDays;
         if (deliveryDistance <= 20) {
             deliveryDays = 1;
-            return deliveryDays;
         } else if (deliveryDistance > 20 && deliveryDistance <= 60) {
             deliveryDays = 2;
-            return deliveryDays;
         } else if (deliveryDistance > 60 && deliveryDistance <= 100) {
             deliveryDays = 3;
-            return deliveryDays;
         } else {
             deliveryDays = -1;
-            return deliveryDays;
         }
+        return deliveryDays;
     }
 }
